@@ -1,0 +1,39 @@
+{{# if product}}
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-6">
+        <ul class="list-group">
+            {{# each product}}
+            <li class="list-group-item">{{ this.item.title }}
+                <span class="label label-success">${{ this.item.price}}</span>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" type="button">Action
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/reduceOne/{{this.item._id}}">Reduce One</a></li>
+                        <li><a href="/reduceAll/{{this.item._id}}">Reduce All</a></li>
+                    </ul>
+                </div>
+                <span class="pull-right">Quantity : {{ this.qty }}</span>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-6">
+        <strong>Total Price: ${{totalPrice}}</strong>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-6">
+        <a href="/checkout"><button type="button" class="btn btn-success">Check Out</button></a>
+    </div>
+</div>
+{{ else }}
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-6">
+        <h1>No Items Found!</h1>
+    </div>
+</div>
+{{/if}}
